@@ -34,7 +34,7 @@ public final class FileProcessor {
 	* @exception IOException On any I/O errors while reading lines from input file.
 	*/
 	public FileProcessor(String inputFilePath)
-		throws InvalidPathException, SecurityException, FileNotFoundException, IOException {
+				throws InvalidPathException, SecurityException, FileNotFoundException, IOException {
 
 		if (!Files.exists(Paths.get(inputFilePath))) {
 			throw new FileNotFoundException("invalid input file or input file in incorrect location");
@@ -43,7 +43,7 @@ public final class FileProcessor {
 		reader = new BufferedReader(new FileReader(new File(inputFilePath)));
 		String line = reader.readLine();
 		if (null != line) {
-			words = new LinkedList<String>(Arrays.asList(line.split("\\s+")));
+			words = new LinkedList<String>(Arrays.asList(line.split("\\s")));
 		}
 	}
 
@@ -55,6 +55,7 @@ public final class FileProcessor {
 	* @exception IOException On error encountered when reading from input file.
 	*/
 	public String poll() throws IOException {
+
 		if (null == words) return null;
 		if (0 == words.size()) {
 			String nextLine = reader.readLine();

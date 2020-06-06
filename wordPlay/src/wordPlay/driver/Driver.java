@@ -1,11 +1,14 @@
 package wordPlay.driver;
-
+import wordPlay.util.*;
+import wordPlay.handler.*;
+import java.util.*;
+import java.io.*;
 /**
  * @author John Doe
  *
  */
 public class Driver {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception{
 
 		/*
 		 * As the build.xml specifies the arguments as input,output or metrics, in case the
@@ -17,7 +20,32 @@ public class Driver {
 			System.exit(0);
 		}
 		System.out.println("Hello World! Lets get started with the assignment");
-		//test
 
+		HelperClass hp = new HelperClass();
+		FileProcessor fp = new FileProcessor(args[0]);
+		Results res = new Results();
+		try
+		{	
+			hp.helper(fp);
+			/*
+			int ind =0;
+			String temp = fp.poll();
+			while(temp != null)
+			{
+				ind++;
+				System.out.println(" "+ind+" "+temp);
+				temp = fp.poll();
+			}
+			*/
+			res.store();
+
+
+
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception!!!");
+		}
+		
 	}
 }
