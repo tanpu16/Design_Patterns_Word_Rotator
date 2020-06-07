@@ -7,7 +7,7 @@ import java.lang.*;
 
 public class HelperClass
 {
-        public void helper(FileProcessor fp, Results res, MetricsCalculator cal) throws Exception{
+        public void helper(FileProcessor fp, Results ores, Results mres, MetricsCalculator cal) throws Exception{
                 try
                 {
                         WordRotator robj = new WordRotator();
@@ -21,43 +21,49 @@ public class HelperClass
                         	while(temp != null)
                         	{
                                 	index++;
-					System.out.println("Index1 "+index);
+					//System.out.println("Index1 "+index);
                                 	if(temp.matches("^[a-zA-Z0-9]*$"))
                                 	{
-                                        //System.out.println("String is : "+temp);
-                                        int length = temp.length();
-					totalWordLength += length; 
-                                        char array[] = temp.toCharArray();
-                                        robj.leftRotate(array, index, length);
-                                        String result = String.valueOf(array);
-                                        //System.out.println("Rotated String is : "+result);
-                                        res.store(result);
-					System.out.println("Index2 "+index);
+                                        	//System.out.println("String is : "+temp);
+                                        	int length = temp.length();
+						totalWordLength += length; 
+                                        	char array[] = temp.toCharArray();
+                                        	robj.leftRotate(array, index, length);
+                                        	String result = String.valueOf(array);
+                                        	//System.out.println("Rotated String is : "+result);
+                                        	ores.store(result);
+						ores.store(" ");
+						//System.out.println("Index2 "+index);
                                 	}
                                 	if(temp.matches(".*[.]$")) //end of the line
                                 	{
-                                        String dummy = temp.replace(".","");
-                                        //System.out.println("after period removal String is : "+dummy);
-                                        int length = dummy.length();
-					totalWordLength += length;
-                                        char array[] = dummy.toCharArray();
-                                        robj.leftRotate(array, index, length);
-                                        String result = String.valueOf(array);
-                                        result = result+".";
-                                        //System.out.println("Rotated String is : "+result);
-					res.store(result);
-					res.printq();
-					wordCount +=index;
-					lines++;
-                                        System.out.println("Index3 "+index);
-					index=0;
+                                        	String dummy = temp.replace(".","");
+                                        	//System.out.println("after period removal String is : "+dummy);
+                                        	int length = dummy.length();
+						totalWordLength += length;
+                                        	char array[] = dummy.toCharArray();
+                                        	robj.leftRotate(array, index, length);
+                                        	String result = String.valueOf(array);
+                                        	result = result+".";
+                                        	//System.out.println("Rotated String is : "+result);
+						ores.store(result);
+						ores.store("\n");
+						wordCount +=index;
+						lines++;
+                                        	//System.out.println("Index3 "+index);
+						index=0;
                                 	}
-                                	temp=fp.poll();
-					
+
+                                	temp=fp.poll();					
                         	}
-				double avgWord = cal.avgWord(wordCount,lines);
-				double avgWordLength = cal.avgWordLength(totalWordLength,wordCount);		
-				rs.storeMetrics(avgWord,avgWordLength);
+				String result1 = cal.avgWord(wordCount,lines);
+				String result2 = cal.avgWordLength(totalWordLength,wordCount);
+				mres.store("AVG_NUM_WORDS_PER_SENTENCE - ");
+				mres.store(result1);
+				mres.store("\n");
+				mres.store("AVG_WORD_LENGTH - ");
+				mres.store(result2);
+				mres.store("\n");
 
                 }
                 catch(FileNotFoundException ex)

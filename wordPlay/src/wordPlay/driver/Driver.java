@@ -24,11 +24,15 @@ public class Driver {
 
 		HelperClass hp = new HelperClass();
 		FileProcessor fp = new FileProcessor(args[0]);
-		Results res = new Results();
+		Results ores = new Results(args[1]);
+		Results mres = new Results(args[2]);
 		MetricsCalculator cal = new MetricsCalculator();
 		try
 		{	
-			hp.helper(fp,res,cal);
+			hp.helper(fp,ores,mres,cal);
+			//Results ores = new Results(args[1]);
+			ores.writeToFile();
+			mres.writeToFile();
 		}
 		catch(Exception e)
 		{

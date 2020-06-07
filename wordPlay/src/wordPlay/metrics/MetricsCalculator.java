@@ -3,22 +3,20 @@ import java.text.DecimalFormat;
 
 public class MetricsCalculator 
 {
-	public double avgWord(int totalWords, int lines)
+	public String avgWord(int totalWords, int lines)
 	{
 		double AVG_NUM_WORDS_PER_SENTENCE = (double)totalWords/(double)lines;
 		DecimalFormat df = new DecimalFormat("0.00");
-		System.out.print("Average num of words per sentence : ");
-		System.out.print(df.format(AVG_NUM_WORDS_PER_SENTENCE));
-		return AVG_NUM_WORDS_PER_SENTENCE;
+		String sresult1 = df.format(AVG_NUM_WORDS_PER_SENTENCE);
+		//String sresult1 = new Double(result1).toString();
+		return sresult1;
 	}
-	public double avgWordLength(int totalWordsLength,int totalWords)
+	public String avgWordLength(int totalWordsLength,int totalWords)
 	{
-		System.out.println("in metrics : "+totalWordsLength+" "+totalWords);
 		double AVG_WORD_LENGTH = (double)totalWordsLength/(double)totalWords;
-		DecimalFormat df = new DecimalFormat();
-		df.setMaximumFractionDigits(2);
-		System.out.print("Average word length : ");
-		System.out.print(df.format(AVG_WORD_LENGTH));
-		return AVG_WORD_LENGTH;
+		DecimalFormat df = new DecimalFormat("0.00");
+		String sresult2 = df.format(AVG_WORD_LENGTH);
+		//String sresult2 = new Double(result2).toString();
+		return sresult2;
 	}	
 }
