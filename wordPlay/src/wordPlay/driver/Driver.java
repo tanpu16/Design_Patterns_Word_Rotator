@@ -1,6 +1,7 @@
 package wordPlay.driver;
 import wordPlay.util.*;
 import wordPlay.handler.*;
+import wordPlay.metrics.*;
 import java.util.*;
 import java.io.*;
 /**
@@ -24,23 +25,10 @@ public class Driver {
 		HelperClass hp = new HelperClass();
 		FileProcessor fp = new FileProcessor(args[0]);
 		Results res = new Results();
+		MetricsCalculator cal = new MetricsCalculator();
 		try
 		{	
-			hp.helper(fp);
-			/*
-			int ind =0;
-			String temp = fp.poll();
-			while(temp != null)
-			{
-				ind++;
-				System.out.println(" "+ind+" "+temp);
-				temp = fp.poll();
-			}
-			*/
-			res.store();
-
-
-
+			hp.helper(fp,res,cal);
 		}
 		catch(Exception e)
 		{

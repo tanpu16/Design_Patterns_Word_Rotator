@@ -4,16 +4,36 @@ import java.util.*;
 
 public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 
-	public void store()
+
+	Queue<String> rwords = new LinkedList<>();
+
+
+	public void store(String str)
 	{
-		Queue<String> rwords = new LinkedList<>();
-		
-		rwords.add("abc");
-		rwords.add("pqr");
-
-		System.out.println("Q elements : "+rwords);
-
+				
+		rwords.add(str);				
 	
 	}
+	public void storeMetrics(double avgWord,double avgWordLength)
+	{
+		double avgWord = avgWord;
+		double avgWordLength = avgWordLength; 
+	}
+
+	public void printq()
+	{
+		System.out.println("Q elements : "+rwords);
+	}
+
+	void writeToFile()
+	{
+		
+	}
+
+	void writeToStdout()
+	{
+		
+	}
+
 
 }
