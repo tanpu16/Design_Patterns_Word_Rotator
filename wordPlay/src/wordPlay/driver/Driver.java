@@ -32,7 +32,11 @@ public class Driver {
 			hp.helper(fp,ores,mres,cal);
 			//Results ores = new Results(args[1]);
 			ores.writeToFile();
+			ores.writeToStdout();
 			mres.writeToFile();
+			mres.writeToStdout();
+
+
 		}
 		catch(Exception e)
 		{

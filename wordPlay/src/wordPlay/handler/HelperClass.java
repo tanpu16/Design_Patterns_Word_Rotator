@@ -10,7 +10,7 @@ public class HelperClass
         public void helper(FileProcessor fp, Results ores, Results mres, MetricsCalculator cal) throws Exception{
                 try
                 {
-                        WordRotator robj = new WordRotator();
+                        	WordRotator robj = new WordRotator();
                        
 				int index = 0;
 				int wordCount=0;
@@ -21,43 +21,42 @@ public class HelperClass
                         	while(temp != null)
                         	{
                                 	index++;
-					//System.out.println("Index1 "+index);
                                 	if(temp.matches("^[a-zA-Z0-9]*$"))
-                                	{
-                                        	//System.out.println("String is : "+temp);
-                                        	int length = temp.length();
+                                	{       
+						int length = temp.length();
 						totalWordLength += length; 
                                         	char array[] = temp.toCharArray();
-                                        	robj.leftRotate(array, index, length);
-                                        	String result = String.valueOf(array);
-                                        	//System.out.println("Rotated String is : "+result);
+                                        	
+						robj.leftRotate(array, index, length);
+                                        	
+						String result = String.valueOf(array);
                                         	ores.store(result);
 						ores.store(" ");
-						//System.out.println("Index2 "+index);
                                 	}
                                 	if(temp.matches(".*[.]$")) //end of the line
                                 	{
                                         	String dummy = temp.replace(".","");
-                                        	//System.out.println("after period removal String is : "+dummy);
                                         	int length = dummy.length();
 						totalWordLength += length;
                                         	char array[] = dummy.toCharArray();
-                                        	robj.leftRotate(array, index, length);
-                                        	String result = String.valueOf(array);
+                                        	
+						robj.leftRotate(array, index, length);
+                                        	
+						String result = String.valueOf(array);
                                         	result = result+".";
-                                        	//System.out.println("Rotated String is : "+result);
 						ores.store(result);
 						ores.store("\n");
 						wordCount +=index;
 						lines++;
-                                        	//System.out.println("Index3 "+index);
 						index=0;
                                 	}
 
                                 	temp=fp.poll();					
                         	}
+				
 				String result1 = cal.avgWord(wordCount,lines);
 				String result2 = cal.avgWordLength(totalWordLength,wordCount);
+				
 				mres.store("AVG_NUM_WORDS_PER_SENTENCE - ");
 				mres.store(result1);
 				mres.store("\n");
