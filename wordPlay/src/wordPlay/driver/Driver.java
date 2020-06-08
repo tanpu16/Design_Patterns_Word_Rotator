@@ -22,15 +22,13 @@ public class Driver {
 		}
 		System.out.println("Hello World! Lets get started with the assignment");
 
-		HelperClass hp = new HelperClass();
-		FileProcessor fp = new FileProcessor(args[0]);
-		Results ores = new Results(args[1]);
-		Results mres = new Results(args[2]);
-		MetricsCalculator cal = new MetricsCalculator();
-		try
-		{	
+		try{
+			HelperClass hp = new HelperClass();
+			FileProcessor fp = new FileProcessor(args[0]);
+			Results ores = new Results(args[1]);
+			Results mres = new Results(args[2]);
+			MetricsCalculator cal = new MetricsCalculator();
 			hp.helper(fp,ores,mres,cal);
-			//Results ores = new Results(args[1]);
 			ores.writeToFile();
 			ores.writeToStdout();
 			mres.writeToFile();
@@ -40,7 +38,7 @@ public class Driver {
 		}
 		catch(Exception e)
 		{
-			System.out.println("Exception!!!");
+			System.out.println("Exception!!! Input File does not exist!");
 		}
 		
 	}

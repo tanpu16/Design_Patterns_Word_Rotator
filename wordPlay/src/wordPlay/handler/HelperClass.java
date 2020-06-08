@@ -16,12 +16,21 @@ public class HelperClass
 				int wordCount=0;
 				int lines=0;
 				int totalWordLength=0;
-                        	String temp = fp.poll();
+                        	
+				String temp = fp.poll();
 
-                        	while(temp != null)
+				if(null == temp)
+				{
+					System.out.println("File is Empty!!! Exiting!!!");
+					System.exit(0);
+				}
+
+                        	while(null != temp)
                         	{
                                 	index++;
-                                	if(temp.matches("^[a-zA-Z0-9]*$"))
+                                	//String checkString="";
+					
+					if(temp.matches("^[a-zA-Z0-9]*$"))
                                 	{       
 						int length = temp.length();
 						totalWordLength += length; 
@@ -33,8 +42,9 @@ public class HelperClass
                                         	ores.store(result);
 						ores.store(" ");
                                 	}
-                                	if(temp.matches(".*[.]$")) //end of the line
+					else if(temp.matches(".*[.]$")) //end of the line
                                 	{
+						//checkString = temp;
                                         	String dummy = temp.replace(".","");
                                         	int length = dummy.length();
 						totalWordLength += length;
@@ -50,8 +60,19 @@ public class HelperClass
 						lines++;
 						index=0;
                                 	}
-
-                                	temp=fp.poll();					
+					else if(!temp.matches("^[a-zA-Z0-9]*$") && !temp.matches(".*[.]$"))
+					{
+						System.out.println("Words contains characters other than [a-zA-Z0-9]... Exiting!!!"+temp);
+						System.exit(0);
+					}	
+                                	temp=fp.poll();
+					/*
+					if(null == temp && checkString.matches(".*[.]$"))
+					{
+						System.out.println("Empty line in input file! Exiting!!!");	
+						System.exit(0);
+					}
+					*/
                         	}
 				
 				String result1 = cal.avgWord(wordCount,lines);

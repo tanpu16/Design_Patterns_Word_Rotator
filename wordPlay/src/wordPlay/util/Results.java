@@ -39,7 +39,7 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 	
 	public void writeToFile() throws Exception
 	{
-		System.out.println("Path is in write "+path+" out "+finalResult);
+		//System.out.println("Path is in write "+path+" out "+finalResult);
 		FileWriter owrite = new FileWriter(path);
 		owrite.write(finalResult);
 		owrite.close();		
