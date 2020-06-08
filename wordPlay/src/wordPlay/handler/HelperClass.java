@@ -62,7 +62,7 @@ public class HelperClass
                                 	}
 					else if(!temp.matches("^[a-zA-Z0-9]*$") && !temp.matches(".*[.]$"))
 					{
-						System.out.println("Words contains characters other than [a-zA-Z0-9]... Exiting!!!"+temp);
+						System.out.println("Word contain characters other than [a-zA-Z0-9]... Exiting!!! "+temp);
 						System.exit(0);
 					}	
                                 	temp=fp.poll();
