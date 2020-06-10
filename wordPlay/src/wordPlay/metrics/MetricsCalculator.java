@@ -5,6 +5,7 @@ public class MetricsCalculator
 {
 	double AVG_NUM_WORDS_PER_SENTENCE,AVG_WORD_LENGTH; 
 
+	//constructor
 	public MetricsCalculator()
 	{
 		AVG_NUM_WORDS_PER_SENTENCE = 0.0;
@@ -16,7 +17,14 @@ public class MetricsCalculator
 	{
 		return "MetricsCalculator [AVG_NUM_WORDS_PER_SENTENCE : "+AVG_NUM_WORDS_PER_SENTENCE+" AVG_WORD_LENGTH : "+AVG_WORD_LENGTH+"]";
 	}
-
+	
+	/*
+	This method used to calculate average number of words per sentence
+	@param totalwords total number of words in input file
+	@param line number of lines in input file
+	@return sresult1 result in String format for storing
+	@see display nothing but calculate the average number of words per line
+	*/
 	public String avgWord(int totalWords, int lines)
 	{
 		AVG_NUM_WORDS_PER_SENTENCE = (double)totalWords/(double)lines;
@@ -26,6 +34,14 @@ public class MetricsCalculator
 		
 		return sresult1;
 	}
+
+	/*
+	This method used to calculate average words length
+	@param totalWordsLength total length of words in input file
+	@param totalWords total number of words in input file
+	@return sresult2 result in String format for storing
+	@see display nothing but calculate the average word length in input file
+	*/
 	public String avgWordLength(int totalWordsLength,int totalWords)
 	{
 		AVG_WORD_LENGTH = (double)totalWordsLength/(double)totalWords;

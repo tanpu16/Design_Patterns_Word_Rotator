@@ -44,9 +44,16 @@ public class HelperClass{
 	}
 	
 
-	//this is a helper method which takes instances of 3 classes used to perform operations on input.txt file.
-	//operations like fetching words by using poll() method of FileProcessor class, Store final result in
-	//store method of Result class.
+	/*this is a helper method which takes instances of 3 classes used to perform operations on input.txt file.
+	operations like fetching words by using poll() method of FileProcessor class, Store final result in
+	store method of Result class.
+	@param fp an instance of FileProcessor.java class from util package
+	@param ores an instance of Results.java class from util package
+	@param mres an instance of Results.java class from util package
+	@return void
+	@see just an helper function for performing rotation,metrics calculation and storing output and 
+	display ocuured exceptions.
+	*/
         public void helper(FileProcessor fp, Results ores, Results mres) throws IOException{
                 try{
                 	                        	
@@ -144,8 +151,12 @@ public class HelperClass{
         }
 
 
-	//this is a void method used to send the final result of Average number of words per line and Average word length to 
-	//to store method of Result class.
+	/*this is a void method used to send the final result of Average number of words per line and Average word length to 
+	to store method of Result class.
+	@param mres instace of Results.java class used for metrics calculation and storing output
+	@return void
+	@see calculate metrics and store the output
+	*/
 	public void metricsStoreMethodCall(Results mres)
 	{
 		String result1 = cal.avgWord(wordCount,lines);

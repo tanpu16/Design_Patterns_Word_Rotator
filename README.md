@@ -33,7 +33,14 @@ Note: Arguments accept the absolute path of the files.
 
 -----------------------------------------------------------------------
 ## Description:
+Results.java class :-
+I used StringBuffer for storing the rotated words. Each append of StringBuffer have O(1) complexity.
+Overall Complexity of StringBuffer.append is O(n), n is the input size in this case number of words in input file.
+And and the time of writing into the file just converted StringBuffer in to String. 
 
+If we directly used String and perform concatenation, On each concatenation a new copy of the string is created, so that the overall complexity is O(n^2).
+
+Also, if any other datastructure used let's say queue. Then there is overhead of performing operations like push(),pop().
 
 -----------------------------------------------------------------------
 ### Academic Honesty statement:
@@ -45,6 +52,6 @@ I am involved in plagiarism or cheating an official form will be
 submitted to the Academic Honesty Committee of the Watson School to
 determine the action that needs to be taken. "
 
-Date: [ADD_DATE_HERE]
+Date: 10 June 2020
 
 

@@ -13,7 +13,13 @@ public class WordRotator
 			return null;
 		}
 
-		//leftRotate is a void function which rotates the array characters by index number of times 
+		/*rotate is a void function which rotates the array characters by index number of times 
+		@param array character array of word which need to ratate
+		@param index by how many times we need to rotate characters of words
+		@param len length of word
+		@return void
+	        @see display nothing just rotate the input array	
+		*/
 		public void rotate(char array[], int index, int len)
 		{
 

@@ -3,12 +3,13 @@ import wordPlay.util.Results;
 import wordPlay.util.FileProcessor;
 import wordPlay.handler.HelperClass;
 import java.io.IOException;
+import java.lang.NullPointerException;
 /**
  * @author John Doe
  *
  */
 public class Driver {
-	public static void main(String[] args) throws IOException{
+	public static void main(String[] args) throws IOException,NullPointerException{
 
 		/*
 		 * As the build.xml specifies the arguments as input,output or metrics, in case the
@@ -44,7 +45,11 @@ public class Driver {
 			ioe.printStackTrace();
 			System.exit(0);
 		}
-		
+		catch(NullPointerException ne)
+		{
+			ne.printStackTrace();
+			System.exit(0);
+		}
 		
 	}
 }
