@@ -1,15 +1,14 @@
 package wordPlay.driver;
-import wordPlay.util.*;
-import wordPlay.handler.*;
-import wordPlay.metrics.*;
-import java.util.*;
-import java.io.*;
+import wordPlay.util.Results;
+import wordPlay.util.FileProcessor;
+import wordPlay.handler.HelperClass;
+import java.io.IOException;
 /**
  * @author John Doe
  *
  */
 public class Driver {
-	public static void main(String[] args) throws Exception{
+	public static void main(String[] args) throws IOException{
 
 		/*
 		 * As the build.xml specifies the arguments as input,output or metrics, in case the
@@ -21,25 +20,31 @@ public class Driver {
 			System.exit(0);
 		}
 		System.out.println("Hello World! Lets get started with the assignment");
+		System.out.print("\n");
 
 		try{
 			HelperClass hp = new HelperClass();
 			FileProcessor fp = new FileProcessor(args[0]);
 			Results ores = new Results(args[1]);
 			Results mres = new Results(args[2]);
-			MetricsCalculator cal = new MetricsCalculator();
-			hp.helper(fp,ores,mres,cal);
+				
+			hp.helper(fp,ores,mres);
+
 			ores.writeToFile();
+			System.out.println("output.txt file Content :");
 			ores.writeToStdout();
+			
 			mres.writeToFile();
+			System.out.println("matrics.txt file content :");
 			mres.writeToStdout();
 
-
 		}
-		catch(Exception e)
+		catch(IOException ioe)
 		{
-			System.out.println("Exception!!! Input File does not exist!");
+			ioe.printStackTrace();
+			System.exit(0);
 		}
+		
 		
 	}
 }

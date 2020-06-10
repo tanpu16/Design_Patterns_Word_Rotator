@@ -6,13 +6,21 @@ import java.lang.*;
 
 public class WordRotator
 {
-		void leftRotate(char array[], int index, int len)
+
+		@Override
+		public String toString()
 		{
+			return null;
+		}
+
+		//leftRotate is a void function which rotates the array characters by index number of times 
+		public void rotate(char array[], int index, int len)
+		{
+
                 	for (int i = 0; i < index; i++)
                 	{
-                        	int j;
                         	char ctemp = array[len-1];
-                        	for (j = len-2; j >= 0; j--)
+                        	for (int j = len-2; j >= 0; j--)
                         	{
                                 	array[j+1] = array[j];
                         	}

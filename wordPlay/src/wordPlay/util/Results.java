@@ -16,36 +16,57 @@ import java.nio.file.InvalidPathException;
 public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 	
 	String path;
-	String finalResult=""; 
-
-	public Results(String FilePath) {
-		
-		path = FilePath;
-
-	}
+	String finalResult; 
 	
 
+	//parameterized constructor
+	public Results(String FilePath) 
+	{
+		path = FilePath;
+		finalResult = "";
+	}
+
+	@Override
+	public String toString()
+	{
+			return "Class Results [Path is -> "+path+"]";
+	}
+	
+	//store is void method,in which finalResult stores the final output in string format
+	//which we can write into the file and stdout
 	public void store(String str)
 	{
 				
 		finalResult = finalResult+str;				
 	
 	}
-	public void storeMetrics(double avgWord,double avgWordLength)
-	{
-		double res1 = avgWord;
-		double res2 = avgWordLength; 
-	}
 	
-	public void writeToFile() throws Exception
+
+	//this is generic void method, which write output to output.txt or matrics.txt depends on
+	//the instace (WordRotator/MatricsCalculator) used to call this method.
+	public void writeToFile() throws IOException
 	{
-		//System.out.println("Path is in write "+path+" out "+finalResult);
+		
 		FileWriter owrite = new FileWriter(path);
-		owrite.write(finalResult);
-		owrite.close();		
+
+		try
+		{
+			owrite.write(finalResult);
+			owrite.close();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.exit(0);
+		}
+		finally
+		{
+			owrite.close();
+		}
+
 	}
 	
-	
+	//this is void method wich is used to write output to console.
 	public void writeToStdout()
 	{
 		System.out.println(finalResult);	

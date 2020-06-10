@@ -1,5 +1,6 @@
 package wordPlay.util;
 
-public interface FileDisplayInterface {
-	
+public interface FileDisplayInterface 
+{
+		public void writeToFile() throws Exception;
 }
